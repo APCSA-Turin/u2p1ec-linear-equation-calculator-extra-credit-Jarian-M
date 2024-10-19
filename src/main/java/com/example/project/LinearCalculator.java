@@ -6,7 +6,7 @@ public class LinearCalculator{
 
     //INSTANCE VARIABLES
     //4 INTEGER variables (name them: x1,x2,y1,y2)
-    private int x1; //4 instance variables, each representing half of a coordinate pt.
+    private int x1; //4 instance variables, each representing half of a coordinate pair, either the x or y coordinate of a coordinate pair.
     private int x2;
     private int y1;
     private int y2;
@@ -151,9 +151,9 @@ public class LinearCalculator{
         str += "\nThe equation of the line between these points is: " + equation(); //prints the final equation of the line, otherwise, it prints that the line is undefined
         str += "\nThe slope of this line is: " + slope(); //prints the slope rounded to the nearest hundredth if the slope is defined, otherwise, it prints -999.99
         str += "\nThe y-intercept of the line is: " + yInt(); //prints the y-intercept rounded to the nearest hundredth if it's defined, otherwise, it prints -999.99
-        str += "\nThe distance between the two points is: " + distance(); //prints the distance between the two coordinate pairs rounded to the nearest hundredth.
-        str += "\n" + findSymmetry();
-        str += "\n" + Midpoint();
+        str += "\nThe distance between the two points is: " + distance(); //prints the distance between the two coordinate pairs rounded to the nearest hundredth
+        str += "\n" + findSymmetry(); //prints the line or point of symmetry if it exists, and prints "No symmetry" if it doesn't exist
+        str += "\n" + Midpoint(); //prints the midpoint of the two coordinate pairs in the form of a coordinate pair
         return str;
     }
 
@@ -164,19 +164,19 @@ public class LinearCalculator{
     // return "Symmetric about the y-axis";
     //return "Symmetric about the origin";
     //return "No symmetry";
-    public String findSymmetry(){
-        int midX = ((x1 + x2) / 2);
-        int midY = ((y1 + y2) / 2);
-        String midPt = "(" + midX + "," + midY + ")";
-        if(midPt.equals("(0,0)")) {
+    public String findSymmetry() {
+        int midX = ((x1 + x2) / 2); //the x-coordinate of the midpoint coordinate pair
+        int midY = ((y1 + y2) / 2); //the y-coordinate of the midpoint coordinate pair
+        String midPt = "(" + midX + "," + midY + ")"; //creates a String midPt which represents the midpoint coordinate pair in the form "(x,y)"
+        if(midPt.equals("(0,0)")) { //two coordinate pairs are symmetric about the origin if their midpoint coordinate pair is equal to "(0,0)." This is because both coordinate pairs are therefore equidistant from the origin.
             return "Symmetric about the origin";
         } else {
-            if(midX == 0) {
+            if(midX == 0) { //two coordinate pairs are symmetric about the y-axis if the x-coordinate of the midpoint coordinate pair is equal to 0. This is because both coordinate pairs are therefore equidistant from the y-axis.
                 return "Symmetric about the y-axis";
             } else {
-                if(midY == 0) {
+                if(midY == 0) { //two coordinate pairs are symmetric about the x-axis if the y-coordinate of the midpoint coordinate pair is equal to 0. This is because both coordinate pairs are therefore equidistant from the x-axis.
                     return "Symmetric about the x-axis";
-                } else {
+                } else { //if the two points aren't symmetric about the origin, the y-axis, or the x-axis, then for our purposes there exists no symmetry between these two coordinate pairs. Thus, "No symmetry" is outputted.
                     return "No symmetry";
                 }
             }
@@ -187,10 +187,10 @@ public class LinearCalculator{
     //the method should calculate the midpoint between the two points
     //it should return "The midpoint of this line is: (0,0)";
     public String Midpoint() {
-        double midX = (double) ((x1 + x2) / 2);
-        double midY = (double) ((y1 + y2) / 2);
-        String midPt = "(" + midX + "," + midY + ")";
-        String midPoint = "The midpoint of this line is: " + midPt;
+        double midX = (double) (x1 + x2) / 2; //the x-coordinate of the midpoint coordinate pair is equal to the average x value between the two coordinate pairs, or (x1+x2)/2. The sum of the x-coordinates of the two coordinate pairs are casted as a double before being divided by two in order to prevent int division and potential rounding errors.
+        double midY = (double) (y1 + y2) / 2; //the y-coordinate of the midpoint coordinate pair is equal to the average y value between the two coordinate pairs, or (y1+y2)/2. The sum of the y-coordinates of the two coordinate pairs are casted as a double before being divided by two in order to prevent int division and potential rounding errors.
+        String midPt = "(" + midX + "," + midY + ")"; //creates a String midPt in the form of a coordinate pair, "(x,y)," with the x and y coordinates of the midpoint coordinate pair as the x and y values respectively.
+        String midPoint = "The midpoint of this line is: " + midPt; //concatenates the midPt String to the end of the "The midpoint of this line is: " String, and sets this new concatenated String to String midPoint.
         return midPoint;
     }
 }
