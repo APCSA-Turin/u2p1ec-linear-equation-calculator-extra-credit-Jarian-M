@@ -122,7 +122,7 @@ public class LinearCalculator{
                 if(slope() == 0) { //if the slope is equal to zero, then the line is horizontal and the value of the final equation is in the form of y=b or y is equal to the y-intercept.
                     finalEq = "y=" + yInt();
                 } else {
-                    if(yInt() < 0) { //if the y-intercept is less than 0, or negative, then the plus sign is removed from the final equation y=mx+b so that the negative sign of the y-intercept subracts from mx instead of adding a negative value.
+                    if(yInt() < 0) { //if the y-intercept is less than 0, or negative, then the plus sign is removed from the final equation y=mx+b so that the negative sign of the y-intercept subtracts from mx instead of adding a negative value.
                         finalEq = "y=" + slope() + "x" + yInt();
                     } else {
                         finalEq = "y=" + slope() + "x+" + yInt(); //if everything else is false, then the slope and y-intercept MUST be defined, and in turn the final equation must be in the form y=mx+b.
